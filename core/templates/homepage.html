@@ -1,0 +1,156 @@
+{% if not user.is_authenticated or logged_in_user.role != 'admin' %}
+<div class="bg-gradient-to-r from-green-100 to-blue-200 min-h-screen mt-10 " >
+    <div class="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center items-center gap-10" > <!-- Enable overflow for scrolling -->
+        <!-- Card Row -->
+        <div class="flex-wrap justify-center mt-16 sm:px-6 md:px-8 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-10 lg:gap-20"> <!-- Centered row of cards -->
+            <a href="{% url 'live_class' %}">
+                <div class="relative overflow-hidden bg-orange-500 ml-2 lg:ml-0 rounded-lg shadow-lg w-44 h-44 lg:w-60 lg:h-60 flex items-center justify-center transform transition-transform duration-300 hover:scale-105"> <!-- Square card -->
+                    <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
+                        <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
+                        <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
+                    </svg>
+                    <div class="relative text-white font-bold text-2xl px-12 pb-6 mt-4">Live Class</div>
+                </div>
+            </a>
+
+            <a href="{% url 'show_files' %}">
+                <div class="relative overflow-hidden bg-teal-500 rounded-lg shadow-lg w-44 h-44 lg:w-60 lg:h-60 flex items-center justify-center transform transition-transform duration-300 hover:scale-105"> <!-- Square card -->
+                    <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
+                        <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
+                        <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
+                    </svg>
+                    <div class="relative text-white font-bold text-2xl px-12 pb-6 mt-4">Class Notes</div>
+                </div>
+            </a>
+            <a href="{% url 'upload_hw' %}">
+                <div class="relative overflow-hidden bg-purple-500 ml-2 lg:ml-0 rounded-lg shadow-lg w-44 h-44 lg:w-60 lg:h-60 flex items-center justify-center transform transition-transform duration-300 hover:scale-105"> <!-- Square card -->
+                    <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
+                        <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
+                        <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
+                    </svg>
+                    <div class="relative text-white font-bold text-2xl px-12 pb-6 mt-4">Upload Hw</div>
+                </div>
+            </a>
+
+            <a href="{% url 'show_checked_hw' %}">
+                <div class="relative overflow-hidden bg-red-500 rounded-lg shadow-lg w-44 h-44 lg:w-60 lg:h-60 flex items-center justify-center transform transition-transform duration-300 hover:scale-105"> <!-- Square card -->
+                    <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
+                        <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
+                        <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
+                    </svg>
+                    <div class="relative text-white font-bold text-2xl px-12 pb-6 mt-4">View Checked Hw</div>
+                </div>
+            </a>
+
+            <a href="{% url 'attend_exam' %}">
+                <div class="relative overflow-hidden bg-blue-500 ml-2 lg:ml-0 rounded-lg shadow-lg w-44 h-44 lg:w-60 lg:h-60 flex items-center justify-center transform transition-transform duration-300 hover:scale-105"> <!-- Square card -->
+                    <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
+                        <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
+                        <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
+                    </svg>
+                    <div class="relative text-white font-bold text-2xl px-12 pb-6 mt-4">Attend Exam</div>
+                </div>
+            </a>
+
+            <a href="{% url 'show_checked_script' %}">
+                <div class="relative overflow-hidden bg-yellow-500 rounded-lg shadow-lg w-44 h-44 lg:w-60 lg:h-60 flex items-center justify-center transform transition-transform duration-300 hover:scale-105"> <!-- Square card -->
+                    <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
+                        <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
+                        <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
+                    </svg>
+                    <div class="relative text-white font-bold text-2xl px-12 pb-6 mt-4">View Exam Scripts</div>
+                </div>
+            </a>
+            <a href="{% url 'show_history' %}">
+                <div class="relative overflow-hidden bg-pink-500 ml-2 lg:ml-0 rounded-lg shadow-lg w-44 h-44 lg:w-60 lg:h-60 flex items-center justify-center transform transition-transform duration-300 hover:scale-105"> <!-- Square card -->
+                    <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
+                        <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
+                        <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
+                    </svg>
+                    <div class="relative text-white font-bold text-2xl px-12 pb-6 mt-4">History</div>
+                </div>
+            </a>
+
+            <a href="{% url 'all_tools' %}">
+            <div class="relative overflow-hidden bg-indigo-500 ml-2 lg:ml-0 rounded-lg shadow-lg w-44 h-44 lg:w-60 lg:h-60 flex items-center justify-center transform transition-transform duration-300 hover:scale-105"> <!-- Square card -->
+                <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
+                    <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
+                    <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
+                </svg>
+                <div class="relative text-white font-bold text-2xl px-12 pb-6 mt-4">Some Tools</div>
+            </div>
+            </a>
+        </div>
+    </div>
+    <br>
+</div>
+{% elif user.is_authenticated and logged_in_user.role == 'admin' %}
+<div class="min-h-screen mt-20">
+    <div class="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center items-center gap-10">
+        <!-- Card Row -->
+        <div class="flex flex-wrap justify-center mt-16 sm:px-6 md:px-8 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-10 lg:gap-20"> <!-- Centered row of cards -->
+            <a href="{% url 'show_all_students' %}">
+                <div class="relative overflow-hidden bg-teal-500 mr-2 rounded-lg shadow-lg w-44 h-44 lg:w-60 lg:h-60 flex items-center justify-center transform transition-transform duration-300 hover:scale-105"> <!-- Square card -->
+                    <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
+                        <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
+                        <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
+                    </svg>
+                    <div class="relative text-white font-bold text-2xl px-12 pb-6 mt-4">Add Notes</div>
+                </div>
+            </a>
+
+            <a href="{% url 'get_all_students_hw' %}">
+                <div class="relative overflow-hidden bg-orange-500 ml-2 rounded-lg shadow-lg w-44 h-44 lg:w-60 lg:h-60 flex items-center justify-center transform transition-transform duration-300 hover:scale-105"> <!-- Square card -->
+                    <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
+                        <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
+                        <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
+                    </svg>
+                    <div class="relative text-white font-bold text-2xl px-12 pb-6 mt-4">View Unchecked Hw</div>
+                </div>
+            </a>
+
+            <a href="{% url 'take_exam' %}">
+                <div class="relative overflow-hidden bg-orange-500 ml-2 rounded-lg shadow-lg w-44 h-44 lg:w-60 lg:h-60 flex items-center justify-center transform transition-transform duration-300 hover:scale-105"> <!-- Square card -->
+                    <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
+                        <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
+                        <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
+                    </svg>
+                    <div class="relative text-white font-bold text-2xl px-12 pb-6 mt-4">Take Exam</div>
+                </div>
+            </a>
+
+            <a href="{% url 'get_all_students' %}">
+                <div class="relative overflow-hidden bg-orange-500 ml-2 rounded-lg shadow-lg w-44 h-44 lg:w-60 lg:h-60 flex items-center justify-center transform transition-transform duration-300 hover:scale-105"> <!-- Square card -->
+                    <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
+                        <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
+                        <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
+                    </svg>
+                    <div class="relative text-white font-bold text-2xl px-12 pb-6 mt-4">View Unchecked Scripts</div>
+                </div>
+            </a>
+
+            <a href="{% url 'exam_list' %}">
+                <div class="relative overflow-hidden bg-orange-500 ml-2 rounded-lg shadow-lg w-44 h-44 lg:w-60 lg:h-60 flex items-center justify-center transform transition-transform duration-300 hover:scale-105"> <!-- Square card -->
+                    <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
+                        <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
+                        <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
+                    </svg>
+                    <div class="relative text-white font-bold text-2xl px-12 pb-6 mt-4">View Exam List</div>
+                </div>
+            </a>
+
+            <a href="{% url 'get_all_students_history' %}">
+                <div class="relative overflow-hidden bg-orange-500 ml-2 rounded-lg shadow-lg w-44 h-44 lg:w-60 lg:h-60 flex items-center justify-center transform transition-transform duration-300 hover:scale-105"> <!-- Square card -->
+                    <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
+                        <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
+                        <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
+                    </svg>
+                    <div class="relative text-white font-bold text-2xl px-12 pb-6 mt-4">History</div>
+                </div>
+            </a>
+
+            
+        </div>
+    </div>
+</div>
+{%endif%}

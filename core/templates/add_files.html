@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}Add Files{% endblock %}
+
+{% block content %}
+<div class="min-h-screen p-4">
+    <div class="text-blue-950 p-4 text-center">
+        <h1 class="text-2xl text-red-500 font-bold mt-16">Add Notes</h1>
+    </div>
+
+    {% if messages %}
+        <ul class="mb-4">
+            {% for message in messages %}
+                <li class="p-2 {% if message.tags == 'success' %}bg-green-500 text-white{% else %}bg-red-500 text-white{% endif %}">
+                    {{ message }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    
+    <div class="px-6 py-4">
+        <div class="space-y-6">
+            <!-- Create Folder Form -->
+            <form method="post" action="{% url 'create_folder' user_id current_folder%}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
+                    <input type="text" name="folder_name" placeholder="New folder name" required class="border border-gray-300 p-2 rounded w-full md:w-auto">
+                    <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-4 border border-green-500 rounded">Create Folder</button>
+                </div>
+            </form>
+
+            <!-- Upload File Form -->
+            {% if current_folder %}
+            <form method="POST" action="{% url 'upload_file' user_id current_folder %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
+                    <input type="text" name="file_name" placeholder="New File name" required class="border border-gray-300 p-2 rounded w-full md:w-auto">
+                    <input type="file" name="file" required class="border border-gray-300 p-2 rounded w-full md:w-auto">
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 border border-blue-500 rounded">Upload File</button>
+                </div>
+            </form>
+            {%endif%}
+        </div>
+    </div>
+
+    <!-- Folders Table -->
+    <div class="px-6 py-4 flex justify-center">
+        <table class="min-w-full border-collapse block md:table">
+            <tbody class="block md:table-row-group">
+                {% for folder in subfolders %}
+                <tr class="border border-grey-500 md:border-none block md:table-row">
+                    <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell md:w-3/4">
+                        <div class="flex justify-center items-center">
+                            <p>{{ folder.name }}</p>
+                        </div>
+                    </td>
+                    <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell md:w-1/4">
+                        <div class="flex justify-center space-x-2">
+                            <a href="{% url 'add_files' user_id folder.id %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-500 rounded">Open</a>
+                            <a href="{% url 'delete_folder' user_id folder.id %}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% for file in files %}
+                <tr class="border border-grey-500 md:border-none block md:table-row">
+                    <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell md:w-3/4">
+                        <div class="flex justify-center items-center">
+                            <p>{{ file.name }}.pdf</p>
+                        </div>
+                    </td>
+                    <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell md:w-1/4">
+                        <div class="flex justify-center space-x-2">
+                            <a href="{{ file.file.url }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 border border-green-500 rounded" download="">Download</a>
+                            <a href="{% url 'delete_file' user_id file.id %}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Delete</a>
+                        </div>
+                    </td>
+                    <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell md:w-1/4">
+                        <div class="flex justify-center space-x-2">
+                            <form method="POST" action="{% url 'edit_file' user_id file.id %}">
+                                {% csrf_token %}
+                                <input type="text" name="file_name" placeholder="New File Name" required class="border border-gray-300 p-2 rounded w-auto">
+                                <button type="submit" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 border border-yellow-500 rounded">Edit</button>
+                            </form>
+                            <a href="{{file.file.url}}" target="_blank" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-500 rounded">Open</a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
