@@ -2,8 +2,8 @@
 
 # Build the project
 echo "Building the project..."
-pip install setuptools
-pip install -r requirements.txt
+python -m pip install setuptools
+python -m pip install -r requirements.txt
 
 echo "Make Migration..."
 python manage.py makemigrations --noinput
